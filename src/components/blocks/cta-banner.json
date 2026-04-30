@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_blocks_cta_banners",
+  "info": {
+    "displayName": "CTA banner",
+    "icon": "bullhorn",
+    "description": "Standalone call-to-action banner — heading, body, button."
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "text",
+      "required": false
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "required": true,
+      "component": "shared.cta"
+    }
+  }
+}

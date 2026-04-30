@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_blocks_heros",
+  "info": {
+    "displayName": "Hero",
+    "icon": "image",
+    "description": "Page-leading hero with heading, body copy, image and CTA."
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "text",
+      "required": false
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "required": false,
+      "component": "shared.cta"
+    }
+  }
+}
