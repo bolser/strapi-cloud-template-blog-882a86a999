@@ -25,6 +25,7 @@ module.exports = ({ env }) => ({
         const params = new URLSearchParams({
           secret: env('PREVIEW_SECRET'),
           previewStatus: status,
+          locale,
         });
         return `${env('CLIENT_URL')}/${doc.slug}?${params.toString()}`;
       },
