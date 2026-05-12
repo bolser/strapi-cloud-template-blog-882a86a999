@@ -14,4 +14,16 @@ module.exports = ({ env }) => ({
     nps: env.bool('FLAG_NPS', true),
     promoteEE: env.bool('FLAG_PROMOTE_EE', true),
   },
+  preview: {
+    enabled: true,
+    config: {
+      allowedOrigins: env('CLIENT_URL'),
+      async handler(uid, { documentId, locale }) {
+        if (uid !== 'api::page.page') return null;
+        const doc = await strapi.documents(uid).findOne({ documentId, locale });
+        if (!doc) return null;
+        return `${env('CLIENT_URL')}/${doc.slug}`;
+      },
+    },
+  },
 });
