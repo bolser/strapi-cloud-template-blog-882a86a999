@@ -18,11 +18,15 @@ module.exports = ({ env }) => ({
     enabled: true,
     config: {
       allowedOrigins: env('CLIENT_URL'),
-      async handler(uid, { documentId, locale }) {
+      async handler(uid, { documentId, locale, status }) {
         if (uid !== 'api::page.page') return null;
         const doc = await strapi.documents(uid).findOne({ documentId, locale });
         if (!doc) return null;
-        return `${env('CLIENT_URL')}/${doc.slug}`;
+        const params = new URLSearchParams({
+          secret: env('PREVIEW_SECRET'),
+          previewStatus: status,
+        });
+        return `${env('CLIENT_URL')}/${doc.slug}?${params.toString()}`;
       },
     },
   },
