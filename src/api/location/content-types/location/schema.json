@@ -125,6 +125,11 @@
         }
       }
     },
+    "linkedFaqs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::faq.faq"
+    },
     "introText": {
       "type": "blocks",
       "required": false,
