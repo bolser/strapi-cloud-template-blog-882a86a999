@@ -19,15 +19,25 @@ module.exports = ({ env }) => ({
     config: {
       allowedOrigins: env('CLIENT_URL'),
       async handler(uid, { documentId, locale, status }) {
-        if (uid !== 'api::page.page') return null;
+        // Map each previewable content type to the FE URL path that renders
+        // it. Add a new entry here when a new content type goes live with a
+        // public page (e.g. Article → `/news/${slug}`).
+        const pathFor = {
+          'api::page.page': (slug) => `/${slug}`,
+          'api::location.location': (slug) => `/locations/${slug}`,
+        };
+        const buildPath = pathFor[uid];
+        if (!buildPath) return null;
+
         const doc = await strapi.documents(uid).findOne({ documentId, locale });
         if (!doc) return null;
+
         const params = new URLSearchParams({
           secret: env('PREVIEW_SECRET'),
           previewStatus: status,
           locale,
         });
-        return `${env('CLIENT_URL')}/${doc.slug}?${params.toString()}`;
+        return `${env('CLIENT_URL')}${buildPath(doc.slug)}?${params.toString()}`;
       },
     },
   },
