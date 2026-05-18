@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_locations_features",
+  "info": {
+    "displayName": "Location Feature",
+    "icon": "star",
+    "description": "Repeatable feature on a Location page — image + heading + rich-text body, optional CTA."
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "blocks",
+      "required": false
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "required": false,
+      "component": "shared.cta"
+    }
+  }
+}

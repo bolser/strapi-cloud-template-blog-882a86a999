@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_locations_faqs",
+  "info": {
+    "displayName": "Location FAQ",
+    "icon": "question",
+    "description": "FAQ entry on a Location page — plain-text question, rich-text answer."
+  },
+  "options": {},
+  "attributes": {
+    "question": {
+      "type": "string",
+      "required": true
+    },
+    "answer": {
+      "type": "blocks",
+      "required": false
+    }
+  }
+}

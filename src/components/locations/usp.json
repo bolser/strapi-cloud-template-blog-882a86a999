@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_locations_usps",
+  "info": {
+    "displayName": "Location USP",
+    "icon": "thumbs-up",
+    "description": "Short benefit-style USP on a Location page — icon + heading + plain-text description."
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    }
+  }
+}
